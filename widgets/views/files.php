@@ -15,7 +15,7 @@ if(!$hideTitle){
                 'label' => Yii::t("D2filesModule.crud_static","Drop files to upload"),
                 'type' => 'raw',
                 'template' => $this->widget(
-                    'vendor.dbrisinajumi.d2files.widgets.d2Upload',
+                    'vendor.ivarsju.d2files.widgets.d2Upload',
                     array(
                         'action' => 'template',
                         'model_name'=> $model_name,
@@ -28,11 +28,12 @@ if(!$hideTitle){
                     true
                     ),
                 'value' => $this->widget("bootstrap.widgets.TbButton", array(
-                    "label"=>Yii::t("D2filesModule.crud_static","Add file"),
-                    "icon"=>"icon-upload-alt",
+                    "icon"=>"icon-upload-alt no-margin",
                     'htmlOptions' => array(
-                        'data-toggle' => 'modal',
-                        'onclick' => '$("#fileupload_'.$this->getId().'").trigger("click");'
+                        'data-toggle' => 'tooltip',
+                        'onclick' => '$("#fileupload_'.$this->getId().'").trigger("click");',
+                        'title' => Yii::t("D2filesModule.crud_static","Add file"),
+                        'class' => 'pull-right',
                      ),
                     'visible' => !$readOnly
 

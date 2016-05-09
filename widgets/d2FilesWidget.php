@@ -1,7 +1,7 @@
 <?php
 
-Yii::import('vendor.dbrisinajumi.d2files.D2filesModule');
-Yii::import('vendor.dbrisinajumi.d2files.controllers.D2filesController');
+Yii::import('vendor.ivarsju.d2files.D2filesModule');
+Yii::import('vendor.ivarsju.d2files.controllers.D2filesController');
 
 class d2FilesWidget extends CWidget
 {

@@ -39,9 +39,10 @@ if (D2files::extendedCheckAccess($model . '.downloadD2File', false)) {
         $file_download_ajax_url = $this->controler->createUrl('downloadFile', array('id' => $mfile->id),'&amp;');
 
         $sFileListHtml .= '<tr id="d2file-' . $mfile->id . '">'
-                . '<td><a href="' . $file_download_ajax_url . '" rel="tooltip" title="' . Yii::t("D2filesModule.crud_static", "Download") . '" class="download" data-toggle="tooltip"><i class="icon-file-text blue"></i> ' . $mfile->file_name . '</a></td>'
+                . '<td><i class="icon-file-text blue"></i> <span class="d2file-text">' . $mfile->file_name . '</span></td>'
                 . $file_type
                 . '<td class="button-column">'
+                . '<a href="' . $file_download_ajax_url . '" rel="tooltip" title="' . Yii::t("D2filesModule.crud_static", "Download") . '" class="download" data-toggle="tooltip"><i class="icon-download-alt"></i></a> '
                 . $file_delete_ajax_url
                 . '</td>'
                 . '</tr>';
@@ -77,6 +78,6 @@ $file_form = '<form method="post" id="d2FileUploadForm_'.$this->getId().'" name=
                                 </form>';
 
 if (!$readOnly && D2files::extendedCheckAccess($model . '.uploadD2File', false)) {
-    echo "<tr id=\"dropZone_".$this->getId()."\" style=\"border: 3px dashed #ccc;\"><th style=\"vertical-align: middle; width: 220px; padding-left:10px;\"><span class=\"bigger-110 bolder\"><i class=\"icon-cloud-upload grey\"></i> {label}</span></th><td>{value}</td></tr>\n";
+    echo "<tr id=\"dropZone_".$this->getId()."\" class=\"dropZone\" style=\"border: 3px dashed #ccc;\"><td style=\"vertical-align: middle; padding-left:10px;\"><span class=\"bigger-110 bolder\" style=\"vertical-align: middle; line-height: 43px;\"><i class=\"icon-cloud-upload grey\"></i> {label}</span> {value}</td></tr>\n";
 }
-echo "<tr><td colspan=\"2\">" . $file_form . "</td></tr>\n";
+echo "<tr><td class=\"no-padding-left no-padding-right\">" . $file_form . "</td></tr>\n";

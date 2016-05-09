@@ -96,8 +96,8 @@ class d2Upload extends CWidget {
             $comments_row .= '<a class="notes_editable" href="#" rel="D2files_notes_\'+file.id+\'" data-pk="\'+file.id+\'"></a>';
             $comments_row .= '</td></tr>';
         }
-
-        if(!$this->readOnly){
+        
+        if (!$this->readOnly) {
             $file_type_js = '';
             $file_type_editable = '';
 
@@ -134,22 +134,22 @@ class d2Upload extends CWidget {
                                     return;
                                 }
                                 var sRow = 
-                                \'<tr id="d2file-\'+file.id+\'">\'
-                                + \'<td>\'
-                                  + \'<a href="'.$file_download_ajax_url.'&id=\'+file.id+\'" rel="tooltip" title="'.Yii::t("D2filesModule.crud_static","Download").'" class="download" data-toggle="tooltip">\'
-                                    + \'<i class="icon-file-text blue"></i> \' + file.name + \'</a></td>\'
+                                \'<tr id="d2file-\'+file.id+\'"><td><i class="icon-file-text blue"></i> <span class="d2file-text">\' + file.name + \'</span></td>\'
                                 ' . $file_type_js . '
                                 + \'<td class="button-column">\'
+                                + \'<a href="'.$file_download_ajax_url.'&id=\'+file.id+\'" rel="tooltip" title="'.Yii::t("D2filesModule.crud_static","Download").'" class="download" data-toggle="tooltip"><i class="icon-download-alt"></i></a> \'
                                 ' . $file_delete_ajax_url . '
                                 + \'</td>\'
                                 + \'</tr>\'
                                 + \'' . $comments_row . '\'
                                 ;
+                                var $newRow = $(sRow);
                                 if ($("#attachment_list_'.$this->getId().' tr").length > 0) {
-                                    $("#attachment_list_'.$this->getId().' tr:last").after(sRow);
+                                    $("#attachment_list_'.$this->getId().' tr:last").after($newRow);
                                 } else {
-                                    $("#attachment_list_'.$this->getId().'").append(sRow);
+                                    $("#attachment_list_'.$this->getId().'").append($newRow);
                                 }
+                                $newRow.trigger("d2Upload.afterUpload");
                             });
 
                             ' . $file_type_editable . ' 

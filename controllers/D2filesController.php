@@ -124,7 +124,7 @@ class D2filesController extends Controller
             throw new CHttpException(403, Yii::t("D2filesModule.model","You are not authorized to perform this action."));
         }
 
-        Yii::import("vendor.dbrisinajumi.d2files.compnents.*");
+        Yii::import("vendor.ivarsju.d2files.compnents.*");
         $oUploadHandler = new UploadHandlerD2files(
                         array(
                             'model_name' => $model_name,
@@ -175,7 +175,7 @@ class D2filesController extends Controller
             throw new CHttpException(403, Yii::t("D2filesModule.model","You are not authorized to perform this action."));
         }
 
-        Yii::import( "vendor.dbrisinajumi.d2files.compnents.*");
+        Yii::import("vendor.ivarsju.d2files.compnents.*");
         $oUploadHandler = new UploadHandlerD2files(
                         array(
                             'model_name' => $model->model,
@@ -235,7 +235,7 @@ class D2filesController extends Controller
         /**
          * download file
          */
-        Yii::import( "vendor.dbrisinajumi.d2files.compnents.*");
+        Yii::import("vendor.ivarsju.d2files.compnents.*");
         $oUploadHandler = new UploadHandlerD2files(
                         array(
                             'model_name' => $model->model,
