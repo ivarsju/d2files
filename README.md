@@ -10,7 +10,7 @@
  * install https://github.com/blueimp/jQuery-File-Upload?source=c
  * install https://github.com/ivarsju/d2files.git
 ```bash
-php composer.phar require dbrisinajumi/d2files dev-master
+php composer.phar require ivarsju/d2files dev-master
 ```
 
  * add to config/main.php
