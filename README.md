@@ -15,13 +15,16 @@ php composer.phar require dbrisinajumi/d2files dev-master
 
  * add to config/main.php
 ```php
+     'aliases' => array(
+	'd2files' => 'vendor.ivarsju.d2files',
+     ),
      'import' => array(
-        'vendor.dbrisinajumi.d2files.models.*',
-        'vendor.dbrisinajumi.d2files.widgets.*', // shared classes
+        'd2files.models.*',
+        'd2files.widgets.*', // shared classes
     ),
     'modules' => array(
         'd2files' => array(
-            'class' => 'vendor.dbrisinajumi.d2files.D2filesModule',
+            'class' => 'd2files.D2filesModule',
             'upload_dir' => 'root.upload',
             'accept_file_types' => '/\.(gif|pdf|dat|jpe?g|png|doc|docx|xls|xlsx|htm)$/i',
             
@@ -46,9 +49,18 @@ php composer.phar require dbrisinajumi/d2files dev-master
          ),  
 	 ),
 ```
-* to config/console.php under commandMap add
+* add to config/console.php
 ```
-	'd2files' => 'vendor.dbrisinajumi.d2files.migrations', 
+     'aliases' => array(
+	'd2files' => 'vendor.ivarsju.d2files',
+     ),
+     'commandMap' => array(
+     	'migrate' => array(
+     	    'modulePaths' => array(
+     	    	'd2files' => 'd2files.migrations',
+     	    )
+     	)
+     )
 ```
 
 * execute yiic migration
