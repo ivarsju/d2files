@@ -4,6 +4,22 @@ if(!$hideTitle){
 <div class="table-header header-color-blue">
     <i class="icon-<?php echo $icon; ?>"></i>
     <?php echo $title; ?>
+    <?php
+    $this->widget(
+        'bootstrap.widgets.TbButton',
+        array(
+            'buttonType'  => 'ajaxButton', 
+            'type'        => 'primary',
+            'size'        => 'mini',
+            'icon'        => 'icon-plus',
+            'htmlOptions' => array(
+                'data-toggle' => 'tooltip',
+                'onclick'     => '$("#fileupload_' . $this->getId() . '").trigger("click");',
+                'title'       => Yii::t("D2filesModule.crud_static", "Add file"),
+            ),                 
+        )
+    );        
+    ?>
 </div>
 <?php
 }    
@@ -15,7 +31,7 @@ if(!$hideTitle){
                 'label' => Yii::t("D2filesModule.crud_static","Drop files to upload"),
                 'type' => 'raw',
                 'template' => $this->widget(
-                    'vendor.ivarsju.d2files.widgets.d2Upload',
+                    'd2files.widgets.d2Upload',
                     array(
                         'action' => 'template',
                         'model_name'=> $model_name,

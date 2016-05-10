@@ -37,15 +37,19 @@ if (D2files::extendedCheckAccess($model . '.downloadD2File', false)) {
         }
 
         $file_download_ajax_url = $this->controler->createUrl('downloadFile', array('id' => $mfile->id),'&amp;');
-
+        
+        $short_name = mb_strlen($mfile->file_name, 'utf8') > 30 ? mb_substr($mfile->file_name, 0, 27) . '...' : $mfile->file_name;
+        $file_title = Yii::t("D2filesModule.crud_static", "Download") . ': ' . $mfile->file_name;
+        
         $sFileListHtml .= '<tr id="d2file-' . $mfile->id . '">'
-                . '<td><i class="icon-file-text blue"></i> <span class="d2file-text">' . $mfile->file_name . '</span></td>'
-                . $file_type
-                . '<td class="button-column">'
-                . '<a href="' . $file_download_ajax_url . '" rel="tooltip" title="' . Yii::t("D2filesModule.crud_static", "Download") . '" class="download" data-toggle="tooltip"><i class="icon-download-alt"></i></a> '
-                . $file_delete_ajax_url
-                . '</td>'
-                . '</tr>';
+            . '<td><i class="icon-file-text blue"></i> '
+            . '<a href="' . $file_download_ajax_url . '" rel="tooltip" title="' . $file_title . '" class="download" data-toggle="tooltip">' . $short_name . '</a></td>'
+            . $file_type
+            . '<td class="button-column">'
+            . '<a href="' . $file_download_ajax_url . '" rel="tooltip" title="' . $file_title . '" class="download" data-toggle="tooltip"><i class="icon-download-alt"></i></a> '
+            . $file_delete_ajax_url
+            . '</td>'
+            . '</tr>';
         
         if (D2files::extendedCheckAccess($model . '.uploadD2File', false)) {
         

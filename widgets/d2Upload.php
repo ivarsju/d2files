@@ -128,17 +128,24 @@ class d2Upload extends CWidget {
                         url : "'.$file_upload_ajax_url.'",                    
                         dropZone : "#dropZone_'.$this->getId().'",
                         done: function (e, data) {
+                            function _substring(string, lenght) {
+                                return (string.length > lenght) ? string.substring(0, lenght - 3) + "..." : string;
+                            }
                             $.each(data.result, function (index, file) {
                                 if (file.error != undefined && file.error != "") {
                                     alert(file.error);
                                     return;
                                 }
                                 var sRow = 
-                                \'<tr id="d2file-\'+file.id+\'"><td><i class="icon-file-text blue"></i> <span class="d2file-text">\' + file.name + \'</span></td>\'
+                                \'<tr id="d2file-\'+file.id+\'">\'
+                                + \'<td><i class="icon-file-text blue"></i> \'
+                                  + \'<a href="'.$file_download_ajax_url.'&id=\'+file.id+\'" rel="tooltip" title="'.Yii::t("D2filesModule.crud_static","Download").' \' + file.name + \'" class="download" data-toggle="tooltip">\'
+                                  + _substring(file.name, 30) + \'</a></td>\'
                                 ' . $file_type_js . '
                                 + \'<td class="button-column">\'
-                                + \'<a href="'.$file_download_ajax_url.'&id=\'+file.id+\'" rel="tooltip" title="'.Yii::t("D2filesModule.crud_static","Download").'" class="download" data-toggle="tooltip"><i class="icon-download-alt"></i></a> \'
-                                ' . $file_delete_ajax_url . '
+                                  + \'<a href="'.$file_download_ajax_url.'&id=\'+file.id+\'" rel="tooltip" title="'.Yii::t("D2filesModule.crud_static","Download").' \' + file.name + \'" class="download" data-toggle="tooltip">\'
+                                  + \'<i class="icon-download-alt"></i></a> \'
+                                  ' . $file_delete_ajax_url . '
                                 + \'</td>\'
                                 + \'</tr>\'
                                 + \'' . $comments_row . '\'

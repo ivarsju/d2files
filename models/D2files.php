@@ -191,7 +191,7 @@ class D2files extends BaseD2files
         /**
          * get path and saved file name
          */
-        Yii::import( "vendor.dbrisinajumi.d2files.compnents.*");
+        Yii::import("d2files.compnents.*");
         $dir_path = UploadHandlerD2files::getUploadDirPath($model_name);
         $file_name = UploadHandlerD2files::createSaveFileName($d2files->id, $d2files->file_name);
         
@@ -204,7 +204,7 @@ class D2files extends BaseD2files
     }    
     
     public function getFileFullPath(){
-        Yii::import( "vendor.dbrisinajumi.d2files.compnents.*");
+        Yii::import("d2files.compnents.*");
         $dir_path = UploadHandlerD2files::getUploadDirPath($this->model);
         $file_name = UploadHandlerD2files::createSaveFileName($this->id, $this->file_name);        
         
