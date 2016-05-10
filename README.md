@@ -1,4 +1,4 @@
-# d2files (cloned from d1files)
+# d2files (fork from Dbrisinajumi/d2files)
 
 
 ## Features
@@ -8,17 +8,17 @@
 
 ## Installation
  * install https://github.com/blueimp/jQuery-File-Upload?source=c
- * install https://github.com/DBRisinajumi/d2files.git
+ * install https://github.com/ivarsju/d2files.git
 ```bash
 php composer.phar require dbrisinajumi/d2files dev-master
 ```
 
  * add to config/main.php
 ```php
-     'aliases' => array(
-	'd2files' => 'vendor.ivarsju.d2files',
-     ),
-     'import' => array(
+    'aliases' => array(
+        'd2files' => 'vendor.ivarsju.d2files',
+    ),
+    'import' => array(
         'd2files.models.*',
         'd2files.widgets.*', // shared classes
     ),
@@ -36,31 +36,31 @@ php composer.phar require dbrisinajumi/d2files dev-master
                     'task_init_status' => 1, //Active
                     'task_due_in_days' => 3,
                     'user_roles' => array('Agent','Client'),
-                    ),
+                ),
             ),
             'shareable_by_link' => [
                 'my_module.my_model' => [
                     'allow_ip' => [
                         '127.0.0.1',
-                        ],
+                    ],
                     'salt' => '1212133243243',
                 ]
             ]
-         ),  
-	 ),
+        ),  
+    ),
 ```
 * add to config/console.php
 ```
-     'aliases' => array(
-	'd2files' => 'vendor.ivarsju.d2files',
-     ),
-     'commandMap' => array(
-     	'migrate' => array(
-     	    'modulePaths' => array(
-     	    	'd2files' => 'd2files.migrations',
-     	    )
-     	)
-     )
+    'aliases' => array(
+        'd2files' => 'vendor.ivarsju.d2files',
+    ),
+    'commandMap' => array(
+        'migrate' => array(
+            'modulePaths' => array(
+                'd2files' => 'd2files.migrations',
+            )
+        )
+    )
 ```
 
 * execute yiic migration
@@ -69,15 +69,17 @@ php composer.phar require dbrisinajumi/d2files dev-master
 ## Usage
 ### VIEW
 ```php
-    $this->widget('d2FilesWidget',[
-        'module'=>$this->module->id, 
-        'model'=>$model,
-        'title'=> 'Wiget Title',
-        'icon' => false,
-        'hideTitle' => false,
-        'readOnly' = false,
+    $this->widget(
+        'd2FilesWidget',
+        [
+            'module'    => $this->module->id, 
+            'model'     => $model,
+            'title'     => 'Wiget Title',
+            'icon'      => false,
+            'hideTitle' => false,
+            'readOnly'  => false,
         ]
-        );
+    );
 ```
 
 ### Requirements
